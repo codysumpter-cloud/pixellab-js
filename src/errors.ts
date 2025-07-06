@@ -54,8 +54,9 @@ export async function handleHttpError(response: Response): Promise<never> {
   }
 
   const message =
-    errorData.detail ||
-    errorData.message ||
+    typeof errorData.detail === 'string' ? errorData.detail :
+    typeof errorData.message === 'string' ? errorData.message :
+    typeof errorData.detail === 'object' ? JSON.stringify(errorData.detail) :
     `HTTP ${response.status}: ${response.statusText}`;
 
   switch (response.status) {

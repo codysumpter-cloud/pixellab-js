@@ -140,7 +140,7 @@ export async function generateImageBitforge(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/generate-image-bitforge`, {
+    const response = await fetch(`${this.baseUrl}/v2/generate-image-bitforge`, {
       method: "POST",
       headers: {
         ...this.headers(),

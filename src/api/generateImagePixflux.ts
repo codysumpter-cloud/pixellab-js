@@ -110,7 +110,7 @@ export async function generateImagePixflux(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/generate-image-pixflux`, {
+    const response = await fetch(`${this.baseUrl}/v2/generate-image-pixflux`, {
       method: "POST",
       headers: {
         ...this.headers(),

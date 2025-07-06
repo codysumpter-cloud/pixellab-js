@@ -13,12 +13,15 @@ For questions or discussions, join us on [Discord](https://discord.gg/pBeyTBF8T7
 
 - **Generate Image (Pixflux)**: Create characters, items, and environments from text descriptions
 - **Generate Image (Bitforge)**: Use reference images to match a specific art style
-- **Animation with Skeletons**: Animate bi-pedal and quadrupedal characters and monsters with skeleton-based animations
 - **Animation with Text**: Animate with text prompts
+- **Animation with Templates**: Generate animations using pre-made templates for consistent character movements
+- **Animation with Skeletons**: Animate bi-pedal and quadrupedal characters and monsters with skeleton-based animations
+- **Estimate Skeleton**: Estimate skeletons from images
 - **Inpainting**: Edit existing pixel art
 - **Rotation**: Generate rotated views of characters and objects
-
-With much more functionality coming soon.
+- **Generate Tileset**: Create cohesive tilesets for game environments
+- **Generate 4 Rotations**: Generate 4 directional views (north, south, east, west) of characters
+- **Generate 8 Rotations**: Generate 8 directional views including diagonals
 
 ## Installation
 
@@ -90,6 +93,41 @@ const response = await client.generateImageBitforge({
   styleStrength: 50.0,
   noBackground: true,
 });
+```
+
+#### Animate with Templates
+
+```javascript
+const animationResponse = await client.animateWithTemplate({
+  description: "wizard character",
+  action: "walk",
+  imageSize: { width: 64, height: 64 },
+  reference: {
+    type: "template",
+    templateId: "humanoid-1",
+  },
+  templateAnimationId: "walking-432",
+});
+
+// Save animation frames
+for (let i = 0; i < animationResponse.images.length; i++) {
+  await animationResponse.images[i].saveToFile(`wizard_walk_${i}.png`);
+}
+```
+
+#### Generate 4 Rotations
+
+```javascript
+const rotationsResponse = await client.generate4Rotations({
+  description: "knight with sword",
+  imageSize: { width: 64, height: 64 },
+});
+
+// Save each direction
+await rotationsResponse.images.south.saveToFile("knight_south.png");
+await rotationsResponse.images.north.saveToFile("knight_north.png");
+await rotationsResponse.images.east.saveToFile("knight_east.png");
+await rotationsResponse.images.west.saveToFile("knight_west.png");
 ```
 
 #### Get Balance

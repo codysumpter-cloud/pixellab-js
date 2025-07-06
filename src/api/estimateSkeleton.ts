@@ -48,7 +48,7 @@ export async function estimateSkeleton(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/estimate-skeleton`, {
+    const response = await fetch(`${this.baseUrl}/v2/estimate-skeleton`, {
       method: "POST",
       headers: {
         ...this.headers(),

@@ -109,7 +109,7 @@ export async function rotate(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/rotate`, {
+    const response = await fetch(`${this.baseUrl}/v2/rotate`, {
       method: "POST",
       headers: {
         ...this.headers(),

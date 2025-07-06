@@ -120,7 +120,7 @@ export async function animateWithText(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/animate-with-text`, {
+    const response = await fetch(`${this.baseUrl}/v2/animate-with-text`, {
       method: "POST",
       headers: {
         ...this.headers(),

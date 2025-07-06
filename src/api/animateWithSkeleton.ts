@@ -124,7 +124,7 @@ export async function animateWithSkeleton(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/animate-with-skeleton`, {
+    const response = await fetch(`${this.baseUrl}/v2/animate-with-skeleton`, {
       method: "POST",
       headers: {
         ...this.headers(),

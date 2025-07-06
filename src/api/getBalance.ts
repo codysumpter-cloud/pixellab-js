@@ -17,7 +17,7 @@ export async function getBalance(
   this: PixelLabClient
 ): Promise<GetBalanceResponse> {
   try {
-    const response = await fetch(`${this.baseUrl}/balance`, {
+    const response = await fetch(`${this.baseUrl}/v2/balance`, {
       method: "GET",
       headers: this.headers(),
     });

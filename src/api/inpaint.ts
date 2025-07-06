@@ -118,7 +118,7 @@ export async function inpaint(
   };
 
   try {
-    const response = await fetch(`${this.baseUrl}/inpaint`, {
+    const response = await fetch(`${this.baseUrl}/v2/inpaint`, {
       method: "POST",
       headers: {
         ...this.headers(),

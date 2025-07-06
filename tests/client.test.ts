@@ -4,6 +4,7 @@ import {
   AuthenticationError,
   ValidationError,
 } from "../src/index";
+import { settings } from "../src/settings";
 
 describe("PixelLabClient", () => {
   test("should create client from env file", () => {
@@ -28,7 +29,8 @@ describe("PixelLabClient", () => {
   });
 
   test("should handle invalid credentials error", async () => {
-    const client = new PixelLabClient("invalid-secret");
+    const config = settings(".env.development.secrets");
+    const client = new PixelLabClient("invalid-secret", config.baseUrl);
 
     await expect(client.getBalance()).rejects.toThrow(AuthenticationError);
   });
